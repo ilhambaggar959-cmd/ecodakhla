@@ -303,7 +303,7 @@
       height: 220px;
       background:
         linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.38)),
-        url('./images/post1.png') center/cover no-repeat;
+        url('./post1.png') center/cover no-repeat;
       display: flex;
       align-items: end;
       padding: 18px;
@@ -367,26 +367,14 @@
       color: var(--muted);
     }
 
-    .why-image-box {
-      margin: 24px 0 28px;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 16px 40px rgba(15, 53, 87, 0.14);
-      background: #fff;
-    }
-
-    .why-main-img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
+    .terrain-grid,
     .why-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
       gap: 20px;
     }
 
+    .terrain-card,
     .why-card {
       background: #fff;
       border-radius: 24px;
@@ -395,6 +383,7 @@
       border: 1px solid rgba(21, 48, 71, 0.07);
     }
 
+    .terrain-badge,
     .why-badge {
       width: 56px;
       height: 56px;
@@ -407,16 +396,32 @@
       margin-bottom: 18px;
     }
 
+    .terrain-card h3,
     .why-card h3 {
       margin: 0 0 14px;
       color: #123b68;
       font-size: 20px;
     }
 
+    .terrain-card p,
     .why-card p {
       margin: 0;
       color: #4f6680;
       line-height: 1.8;
+    }
+
+    .why-image-box {
+      margin: 24px 0 28px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(15, 53, 87, 0.14);
+      background: #fff;
+    }
+
+    .why-main-img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     .publications {
@@ -502,15 +507,14 @@
     @media (max-width: 980px) {
       .hero-grid,
       .grid-2,
+      .terrain-grid,
       .why-grid,
       .publications,
       .participate-box {
         grid-template-columns: 1fr;
       }
 
-      .visual {
-        min-height: auto;
-      }
+      .visual { min-height: auto; }
     }
 
     @media (max-width: 760px) {
@@ -519,17 +523,9 @@
         align-items: flex-start;
       }
 
-      .nav-links {
-        gap: 12px;
-      }
-
-      .hero-card {
-        padding: 24px;
-      }
-
-      .hero-stats {
-        grid-template-columns: 1fr;
-      }
+      .nav-links { gap: 12px; }
+      .hero-card { padding: 24px; }
+      .hero-stats { grid-template-columns: 1fr; }
 
       .post-img,
       .campaign-cover {
@@ -539,7 +535,6 @@
   </style>
 </head>
 <body>
-
   <header class="topbar">
     <div class="container nav">
       <a href="#accueil" class="brand">
@@ -550,6 +545,7 @@
       <nav class="nav-links">
         <a href="#accueil">Accueil</a>
         <a href="#campagne">Présentation de la campagne</a>
+        <a href="#terrain">Travail de terrain</a>
         <a href="#pourquoi-dakhla">Pourquoi Dakhla</a>
         <a href="#publications">Nos publications</a>
         <a href="#participer">Participer</a>
@@ -639,6 +635,43 @@
       </div>
     </section>
 
+    <section id="terrain">
+      <div class="container">
+        <div class="section-head">
+          <h2>Travail de terrain</h2>
+          <p>
+            La campagne #EcoDakhla s’appuie sur un travail de terrain réel, combinant compréhension institutionnelle, collecte de données et diffusion directe du questionnaire auprès des jeunes.
+          </p>
+        </div>
+
+        <div class="terrain-grid">
+          <div class="terrain-card">
+            <div class="terrain-badge">🏛️</div>
+            <h3>Direction Régionale de l’Environnement</h3>
+            <p>
+              Le projet a été développé dans le cadre d’un stage au sein de la Direction Régionale de l’Environnement de Dakhla, avec une meilleure compréhension de son organisation, de ses services et de son rôle dans la sensibilisation environnementale.
+            </p>
+          </div>
+
+          <div class="terrain-card">
+            <div class="terrain-badge">📊</div>
+            <h3>Données HCP</h3>
+            <p>
+              Un déplacement au Haut-Commissariat au Plan a permis de mobiliser des données statistiques relatives à la jeunesse de Dakhla afin de consolider le cadrage empirique de l’étude et d’appuyer la stratégie de campagne.
+            </p>
+          </div>
+
+          <div class="terrain-card">
+            <div class="terrain-badge">🎓</div>
+            <h3>Lycée Lalla Khadija</h3>
+            <p>
+              Le questionnaire a été diffusé directement auprès des élèves du lycée Lalla Khadija afin de recueillir des réponses exploitables et d’intégrer les lycéens dans la cible prioritaire de la campagne.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="pourquoi-dakhla">
       <div class="container">
         <div class="section-head">
@@ -649,7 +682,7 @@
         </div>
 
         <div class="why-image-box">
-          <img src="./images/dakhla-cover.jpg" alt="Paysage de Dakhla" class="why-main-img">
+          <img src="./dakhla-cover.jpg" alt="Paysage de Dakhla" class="why-main-img">
         </div>
 
         <div class="why-grid">
@@ -691,7 +724,7 @@
 
         <div class="publications">
           <article class="post">
-            <img src="./images/post1.png" alt="Post 1 EcoDakhla" class="post-img">
+            <img src="./post1.png" alt="Post 1 EcoDakhla" class="post-img">
             <div class="post-body">
               <h3>Dakhla mérite mieux</h3>
               <p>
@@ -701,7 +734,7 @@
           </article>
 
           <article class="post">
-            <img src="./images/post2.png" alt="Post 2 EcoDakhla" class="post-img">
+            <img src="./post2.png" alt="Post 2 EcoDakhla" class="post-img">
             <div class="post-body">
               <h3>Chaque geste compte</h3>
               <p>
@@ -711,7 +744,7 @@
           </article>
 
           <article class="post">
-            <img src="./images/post3.png" alt="Post 3 EcoDakhla" class="post-img">
+            <img src="./post3.png" alt="Post 3 EcoDakhla" class="post-img">
             <div class="post-body">
               <h3>Scan & participe</h3>
               <p>
@@ -769,6 +802,5 @@
       <div>© 2026 EcoDakhla — Tous droits réservés</div>
     </div>
   </footer>
-
 </body>
 </html>
