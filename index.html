@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoDakhla | Campagne digitale</title>
+  <meta name="description" content="EcoDakhla — Campagne digitale de sensibilisation pour protéger les plages, la mer et l'environnement de Dakhla." />
+
+  <style>
+    :root {
+      --green: #22a06b;
+      --green-dark: #13724b;
+      --blue: #1f7ae0;
+      --blue-dark: #0d4ea6;
+      --text: #153047;
+      --muted: #5d7285;
+      --white: #ffffff;
+      --bg: #f7fbfd;
+      --shadow: 0 16px 40px rgba(15, 53, 87, 0.12);
+      --radius: 22px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #f8fcff 0%, #eef8fb 100%);
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.88);
+      border-bottom: 1px solid rgba(21, 48, 71, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+
+    .brand-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-weight: 600;
+      transition: color .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue-dark);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-weight: 800;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      box-shadow: 0 12px 28px rgba(31, 122, 224, 0.28);
+    }
+
+    .btn-outline {
+      color: var(--blue-dark);
+      background: white;
+      border: 1px solid rgba(31, 122, 224, 0.18);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 74px 0 52px;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(18px);
+      opacity: 0.22;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 360px;
+      height: 360px;
+      background: var(--green);
+      top: -110px;
+      left: -100px;
+    }
+
+    .hero::after {
+      width: 340px;
+      height: 340px;
+      background: var(--blue);
+      right: -120px;
+      bottom: -120px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(21, 48, 71, 0.08);
+      backdrop-filter: blur(12px);
+      border-radius: 34px;
+      padding: 36px;
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .92rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      background: rgba(34,160,107,.10);
+      padding: 8px 14px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      margin: 0 0 24px;
+      font-size: 1.06rem;
+      color: var(--muted);
+      max-width: 62ch;
+    }
+
+    .rtl { direction: rtl; }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .stat {
+      background: white;
+      border: 1px solid rgba(21, 48, 71, 0.08);
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 0 10px 24px rgba(15, 53, 87, 0.08);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.35rem;
+      color: var(--blue-dark);
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: .92rem;
+      font-weight: 600;
+    }
+
+    .visual {
+      position: relative;
+      min-height: 520px;
+      display: grid;
+      align-items: end;
+    }
+
+    .mock {
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.88));
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(21, 48, 71, 0.08);
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mock::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(34,160,107,.12), transparent 38%),
+        radial-gradient(circle at bottom right, rgba(31,122,224,.12), transparent 35%);
+      pointer-events: none;
+    }
+
+    .phone {
+      width: 100%;
+      max-width: 430px;
+      margin-inline: auto;
+      background: #fff;
+      border-radius: 28px;
+      border: 10px solid #0f1721;
+      box-shadow: 0 24px 50px rgba(12, 34, 58, 0.22);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .phone-top {
+      background: #0f1721;
+      height: 26px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .phone-notch {
+      width: 110px;
+      height: 12px;
+      border-radius: 999px;
+      background: #212f40;
+    }
+
+    .phone-screen {
+      background: linear-gradient(180deg, #f9fdfd 0%, #eef8fb 100%);
+      padding: 20px;
+    }
+
+    .campaign-card {
+      border-radius: 24px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 16px 34px rgba(15, 53, 87, 0.12);
+    }
+
+    .campaign-cover {
+      height: 220px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.38)),
+        url('./images/post1.png') center/cover no-repeat;
+      display: flex;
+      align-items: end;
+      padding: 18px;
+      color: white;
+      font-size: 1.7rem;
+      font-weight: 900;
+    }
+
+    .campaign-body { padding: 18px; }
+
+    .pill {
+      display: inline-block;
+      background: rgba(34,160,107,.12);
+      color: var(--green-dark);
+      font-size: .82rem;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    section { padding: 34px 0; }
+
+    .section-head {
+      margin-bottom: 22px;
+    }
+
+    .section-head h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      line-height: 1.15;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 70ch;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 24px;
+      border: 1px solid rgba(21, 48, 71, 0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.25rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .why-image-box {
+      margin: 24px 0 28px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(15, 53, 87, 0.14);
+      background: #fff;
+    }
+
+    .why-main-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 20px;
+    }
+
+    .why-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 12px 30px rgba(15, 53, 87, 0.08);
+      border: 1px solid rgba(21, 48, 71, 0.07);
+    }
+
+    .why-badge {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: #eaf4f7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 18px;
+    }
+
+    .why-card h3 {
+      margin: 0 0 14px;
+      color: #123b68;
+      font-size: 20px;
+    }
+
+    .why-card p {
+      margin: 0;
+      color: #4f6680;
+      line-height: 1.8;
+    }
+
+    .publications {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .post {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(21, 48, 71, 0.08);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .post-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .post-body {
+      padding: 20px;
+    }
+
+    .post-body h3 {
+      margin: 0 0 12px;
+      color: #123b68;
+      font-size: 1.15rem;
+    }
+
+    .post-body p {
+      margin: 0;
+      line-height: 1.7;
+      color: #4f6680;
+      font-size: .96rem;
+    }
+
+    .participate-box {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .real-qr {
+      background: white;
+      border-radius: 26px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(21, 48, 71, 0.08);
+    }
+
+    .real-qr img {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid rgba(21, 48, 71, 0.08);
+      background: white;
+    }
+
+    .footer {
+      padding: 28px 0 50px;
+      color: var(--muted);
+    }
+
+    .footer-box {
+      background: white;
+      border: 1px solid rgba(21, 48, 71, 0.08);
+      border-radius: 26px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-2,
+      .why-grid,
+      .publications,
+      .participate-box {
+        grid-template-columns: 1fr;
+      }
+
+      .visual {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .hero-card {
+        padding: 24px;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .post-img,
+      .campaign-cover {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#accueil" class="brand">
+        <span class="brand-badge">E</span>
+        <span>EcoDakhla</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#accueil">Accueil</a>
+        <a href="#campagne">Présentation de la campagne</a>
+        <a href="#pourquoi-dakhla">Pourquoi Dakhla</a>
+        <a href="#publications">Nos publications</a>
+        <a href="#participer">Participer</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="accueil">
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <div class="eyebrow">🌊 Campagne digitale de sensibilisation</div>
+          <h1>EcoDakhla</h1>
+          <p class="rtl"><strong>معًا من أجل حماية الداخلة</strong></p>
+          <p>
+            Une campagne digitale pour sensibiliser, mobiliser et encourager les jeunes de Dakhla à protéger les plages, la mer et l’environnement local.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#participer">Participer maintenant</a>
+            <a class="btn btn-outline" href="#publications">Découvrir nos contenus</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>80,4%</strong>
+              <span>Taux d’urbanisation</span>
+            </div>
+            <div class="stat">
+              <strong>+4,40%</strong>
+              <span>Croissance démographique</span>
+            </div>
+            <div class="stat">
+              <strong>38</strong>
+              <span>Réponses au questionnaire</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="visual">
+          <div class="mock">
+            <div class="phone">
+              <div class="phone-top">
+                <div class="phone-notch"></div>
+              </div>
+
+              <div class="phone-screen">
+                <div class="campaign-card">
+                  <div class="campaign-cover">Dakhla mérite mieux…</div>
+                  <div class="campaign-body">
+                    <span class="pill">#EcoDakhla</span>
+                    <h3>Chaque geste compte</h3>
+                    <p>Agissons pour protéger Dakhla.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="campagne">
+      <div class="container">
+        <div class="section-head">
+          <h2>Présentation de la campagne</h2>
+          <p>
+            #EcoDakhla est une campagne de sensibilisation environnementale qui vise à encourager les jeunes de Dakhla à protéger les plages, la mer et l’environnement local à travers des contenus digitaux, des actions concrètes et une participation citoyenne.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Objectif principal</h3>
+            <p>
+              Transformer la sensibilisation environnementale en engagement éco-citoyen mesurable grâce à une stratégie digitale cohérente, visuelle et accessible.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Cible</h3>
+            <p>
+              Les jeunes de Dakhla âgés de 15 à 30 ans, répartis en trois segments : lycéens, étudiants et jeunes actifs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pourquoi-dakhla">
+      <div class="container">
+        <div class="section-head">
+          <h2>Pourquoi Dakhla ?</h2>
+          <p>
+            Dakhla est une ville à forte valeur écologique, reconnue pour la beauté de ses plages, de sa lagune et de son littoral. Préserver cet environnement est une responsabilité collective.
+          </p>
+        </div>
+
+        <div class="why-image-box">
+          <img src="./images/dakhla-cover.jpg" alt="Paysage de Dakhla" class="why-main-img">
+        </div>
+
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-badge">🌿</div>
+            <h3>Un patrimoine naturel précieux</h3>
+            <p>
+              La lagune, les plages et le littoral de Dakhla représentent un écosystème à forte valeur environnementale et symbolique.
+            </p>
+          </div>
+
+          <div class="why-card">
+            <div class="why-badge">📱</div>
+            <h3>Une cible connectée</h3>
+            <p>
+              Les données démographiques et digitales montrent que la jeunesse de Dakhla constitue une cible stratégique pour une campagne digitale.
+            </p>
+          </div>
+
+          <div class="why-card">
+            <div class="why-badge">🤝</div>
+            <h3>Un engagement collectif</h3>
+            <p>
+              La protection de Dakhla passe par la mobilisation des citoyens, des jeunes et des acteurs institutionnels autour d’un même objectif.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="container">
+        <div class="section-head">
+          <h2>Nos publications</h2>
+          <p>
+            Découvrez les principaux contenus visuels et messages de sensibilisation conçus dans le cadre de la campagne #EcoDakhla.
+          </p>
+        </div>
+
+        <div class="publications">
+          <article class="post">
+            <img src="./images/post1.png" alt="Post 1 EcoDakhla" class="post-img">
+            <div class="post-body">
+              <h3>Dakhla mérite mieux</h3>
+              <p>
+                Une publication de sensibilisation destinée à attirer l’attention sur la nécessité de protéger les plages et l’environnement de Dakhla.
+              </p>
+            </div>
+          </article>
+
+          <article class="post">
+            <img src="./images/post2.png" alt="Post 2 EcoDakhla" class="post-img">
+            <div class="post-body">
+              <h3>Chaque geste compte</h3>
+              <p>
+                Une publication orientée vers l’action, mettant en avant la participation des jeunes et l’importance des gestes éco-citoyens.
+              </p>
+            </div>
+          </article>
+
+          <article class="post">
+            <img src="./images/post3.png" alt="Post 3 EcoDakhla" class="post-img">
+            <div class="post-body">
+              <h3>Scan & participe</h3>
+              <p>
+                Une publication conçue pour encourager l’engagement direct du public à travers le QR code et l’accès au formulaire de participation.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="participer">
+      <div class="container">
+        <div class="section-head">
+          <h2>Participez à la campagne #EcoDakhla</h2>
+          <p>
+            Scannez le QR code ou cliquez sur le bouton ci-dessous pour accéder au formulaire et rejoindre le mouvement #EcoDakhla.
+          </p>
+        </div>
+
+        <div class="participate-box">
+          <div class="real-qr">
+            <img src="./qr-ecodakhla.png" alt="QR code EcoDakhla" />
+          </div>
+
+          <div class="card">
+            <h3>Rejoignez le mouvement</h3>
+            <p>
+              Chaque geste compte pour préserver les plages de Dakhla. Votre participation contribue à une Dakhla plus propre, plus belle et plus responsable.
+            </p>
+
+            <div style="height: 14px;"></div>
+
+            <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSe0jh5DHXKlQQW4vdeVf-B16SIk6Gbf2_0DBlGJslUBC6P26w/viewform?usp=header" target="_blank" rel="noopener noreferrer">
+              Accéder au formulaire
+            </a>
+
+            <div style="height: 12px;"></div>
+
+            <a class="btn btn-outline" href="https://www.instagram.com/eco.dakhla?igsh=bjg1NnBwd3gyNDJ6" target="_blank" rel="noopener noreferrer">
+              Voir Instagram
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-box">
+      <div>
+        <strong>EcoDakhla</strong>
+        <div>Une campagne digitale pour sensibiliser, mobiliser et agir.</div>
+      </div>
+      <div>© 2026 EcoDakhla — Tous droits réservés</div>
+    </div>
+  </footer>
+
+</body>
+</html>
